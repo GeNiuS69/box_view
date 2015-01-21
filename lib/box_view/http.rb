@@ -62,6 +62,7 @@ module BoxView
       req.add_field("Accept", "text/json")
       n = Net::HTTP.new(uri.host, uri.port)
       n.use_ssl = true
+      n.verify_mode = OpenSSL::SSL::VERIFY_NONE
       res = n.start do |http|
         http.request(req)
       end
